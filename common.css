@@ -1,0 +1,126 @@
+@font-face {
+  font-family: 'Ownglyph_ParkDaHyun';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+  position: relative;
+  font-family: 'Ownglyph_ParkDaHyun';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 4vw;
+}
+
+#timer{
+  font-size: 5vw;
+  margin-bottom: 2rem;
+}
+
+#container{
+  width: 85vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  line-height: 9vh;
+  transition-duration: 100s;
+}
+
+.arrows{
+  transition-duration: 0.1s;
+  height: 1rem;
+}
+
+.arrows:focus {
+  outline: none;
+}
+
+.arrowUp {
+  height: 5vw;
+  width: 5vw;
+  margin : 0 0.5vw;
+  background-image: url(up.png);
+  background-size: contain; /* 이미지가 요소의 크기에 맞게 조정됨 */
+  background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+  background-position: center; /* 이미지가 요소의 중앙에 위치하도록 설정 */
+}
+
+.arrowDown {
+  height: 5vw;
+  width: 5vw;
+  margin : 0 0.5vw;
+  background-image: url(down.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.arrowLeft {
+  height: 5vw;
+  width: 5vw;
+  margin : 0 0.5vw;
+  background-image: url(left.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.arrowRight {
+  height: 5vw;
+  width: 5vw;
+  margin : 0 0.5vw;
+  background-image: url(right.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#resultNow{
+  font-size: 3vw;
+  margin-top: 2rem;
+}
+
+#resultBest{
+  font-size: 3vw;
+  margin-top: 1rem;
+}
+
+#btn-container{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  bottom : 15vh;
+  width : 30vw;
+}
+
+button {
+  font-family: 'Ownglyph_ParkDaHyun';
+  width: 10vw;
+  height: 5vh;
+  font-size: 2vw;
+  border: none;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.1s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e2e6ea;
+}
+
+button:active {
+  background-color: #dae0e5;
+  transform: scale(0.95);
+}

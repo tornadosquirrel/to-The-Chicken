@@ -14,6 +14,12 @@ body{
   align-items: center;
   height: 100vh;
   font-size: 4vw;
+  user-select: none;
+}
+
+#warn {
+  visibility: hidden;
+  color: red;
 }
 
 #timer{
@@ -33,7 +39,7 @@ body{
   box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);
   padding: 1rem;
   line-height: 9vh;
-  transition-duration: 100s;
+  transition-duration: 0.2s;
 }
 
 .arrows{
@@ -43,6 +49,7 @@ body{
 
 .arrows:focus {
   outline: none;
+  /* outline: 0.3vw dashed grey; */
 }
 
 .arrowUp {
@@ -99,7 +106,7 @@ body{
   position: absolute;
   display: flex;
   justify-content: space-between;
-  bottom : 15vh;
+  bottom : 12vh;
   width : 30vw;
 }
 

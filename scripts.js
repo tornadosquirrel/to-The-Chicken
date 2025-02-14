@@ -11,9 +11,12 @@ const arrows = document.getElementsByClassName('arrows');
 let field = 4;  //초기 화살표 갯수
 let cnt = 0;  // arrows 배열의 인덱스를 찾기 위한 변수
 let personalBest = 0;  // 개인 최고 기록
-let elapsed = 0;  //
+let hardmodeBest = 0;
+let elapsed = 0;
 let second = 0;
+let bestStorage = { "normal": 0, "hard": 0 };
 let startTime = Date.now();
+let isGameOver = true;
 
 function createField() {  //필드 제조
   for (let i = 0; i < field; i++) {
@@ -37,10 +40,15 @@ function createField() {  //필드 제조
 }
 
 function eliminateArrow(shape) {  // 화살표 제거
+  if (isGameOver) {
+    document.activeElement.blur();  // 포커스 해제
+    return;
+  }
+
   const arrows = document.getElementsByClassName('arrows');  // arrows 변수를 함수 내에서 정의
   const popSound = new Audio('MP_Blop.mp3');
   popSound.play();
-  if (cnt !== field - 1) {
+  if (cnt < arrows.length - 1) {
     if (shape === "up") {
       if (arrows[cnt].className === "arrows arrowUp") {
         arrows[cnt].style.opacity = 0;
@@ -81,15 +89,25 @@ function eliminateArrow(shape) {  // 화살표 제거
     cnt = 0;
     start();
   }
-  else{
+  else {
+    isGameOver = true;
     clearSound.play();
     stopTime();
-    if (personalBest > elapsed || personalBest === 0) {
-      personalBest = elapsed;
-      resultBest.textContent = `최고 기록: ${timer.textContent}`;
+    if (hardmode.textContent === "일반모드") { //일반모드 최고기록 저장
+      if (personalBest > elapsed || personalBest === 0) {
+        personalBest = elapsed;
+        bestStorage["hard"] = timer.textContent;
+        resultBest.textContent = `최고 기록: ${timer.textContent}`;
+      }
+    }
+    else if (hardmode.textContent === "하드모드") { //하드모드 최고기록 저장
+      if (hardmodeBest > elapsed || hardmodeBest === 0) {
+        hardmodeBest = elapsed;
+        bestStorage["normal"] = timer.textContent;
+        resultBest.textContent = `최고 기록: ${timer.textContent}`;
+      }
     }
     resultNow.textContent = `현재 기록: ${timer.textContent}`;
-    console.log(elapsed)
     container.innerHTML = "";
     field = 4;
     cnt = 0;
@@ -110,6 +128,7 @@ function start() {
 
   // 포커스가 다른 곳으로 이동하지 않도록 설정
   document.addEventListener('focusout', function () {
+    if (isGameOver) return;
     arrows[cnt].focus();
   });
 
@@ -119,17 +138,19 @@ function start() {
         eliminateArrow("up");
       }
       else if (event.key === 'ArrowDown') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
+
       }
       else if (event.key === 'ArrowLeft') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
+
       }
       else if (event.key === 'ArrowRight') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
@@ -140,19 +161,22 @@ function start() {
     arrowDown[i].addEventListener('keydown', function (event) {
       if (event.key === 'ArrowDown') {
         eliminateArrow("down");
+
       }
       else if (event.key === 'ArrowUp') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
+
       }
       else if (event.key === 'ArrowLeft') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
+
       }
       else if (event.key === 'ArrowRight') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
@@ -165,17 +189,17 @@ function start() {
         eliminateArrow("left");
       }
       else if (event.key === 'ArrowUp') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
       else if (event.key === 'ArrowDown') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
       else if (event.key === 'ArrowRight') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
@@ -188,17 +212,17 @@ function start() {
         eliminateArrow("right");
       }
       else if (event.key === 'ArrowUp') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
       else if (event.key === 'ArrowDown') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
       else if (event.key === 'ArrowLeft') {
-        startTime -= 100;
+        startTime -= 200;
         const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
@@ -245,6 +269,8 @@ function stopTime() {
 }
 
 function startGame() {
+  isGameOver = false;
+
   const stageSound = new Audio('MP_Tiny Button Push.mp3');
   stageSound.play();
   container.innerHTML = "";
@@ -256,8 +282,30 @@ function startGame() {
 }
 
 hardmode.addEventListener('click', function () {
-  container.style.transform = "rotateY(9999deg)";
-  startGame();
+  if (hardmode.textContent === "일반모드") {
+    warn.style.visibility = "hidden";
+    hardmode.textContent = "하드모드";
+    if (bestStorage["normal"] === 0) {
+      resultBest.textContent = "최고 기록: 없음";
+    }
+    else {
+      resultBest.textContent = `최고 기록: ${bestStorage["normal"]}`;
+    }
+    container.style.transform = "rotateY(0deg)";
+    startGame();
+  }
+  else if (hardmode.textContent === "하드모드") {
+    warn.style.visibility = "visible";
+    hardmode.textContent = "일반모드";
+    if (bestStorage["hard"] === 0) {
+      resultBest.textContent = "최고 기록: 없음";
+    }
+    else {
+      resultBest.textContent = `최고 기록: ${bestStorage["hard"]}`;
+    }
+    container.style.transform = "rotateY(9999deg)";
+    startGame();
+  }
 });
 
 playGame.addEventListener('click', startGame);

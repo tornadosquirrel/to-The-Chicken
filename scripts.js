@@ -2,8 +2,8 @@ const container = document.getElementById('container');
 const timer = document.getElementById('timer');
 const resultNow = document.getElementById('resultNow');
 const resultBest = document.getElementById('resultBest');
-const stageSound = new Audio('MP_Tiny Button Push.mp3');
-const clearSound = new Audio('MP_와우 (단체).mp3');
+const stageSound = new Audio('./resources/sound/MP_Tiny Button Push.mp3');
+const clearSound = new Audio('./resources/sound/MP_와우 (단체).mp3');
 const playGame = document.getElementById('playGame');
 const hardmode = document.getElementById('hardmode');
 const arrows = document.getElementsByClassName('arrows');
@@ -139,19 +139,19 @@ function start() {
       }
       else if (event.key === 'ArrowDown') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
 
       }
       else if (event.key === 'ArrowLeft') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
 
       }
       else if (event.key === 'ArrowRight') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
     });
@@ -165,19 +165,19 @@ function start() {
       }
       else if (event.key === 'ArrowUp') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
 
       }
       else if (event.key === 'ArrowLeft') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
 
       }
       else if (event.key === 'ArrowRight') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
     });
@@ -190,17 +190,17 @@ function start() {
       }
       else if (event.key === 'ArrowUp') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
       else if (event.key === 'ArrowDown') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
       else if (event.key === 'ArrowRight') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
     });
@@ -213,17 +213,17 @@ function start() {
       }
       else if (event.key === 'ArrowUp') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
       else if (event.key === 'ArrowDown') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
       else if (event.key === 'ArrowLeft') {
         startTime -= 200;
-        const failSound = new Audio('MP_Dog Toy Squeaks.mp3');
+        const failSound = new Audio('./resources/sound/MP_Dog Toy Squeaks.mp3');
         failSound.play();
       }
     });
@@ -271,7 +271,7 @@ function stopTime() {
 function startGame() {
   isGameOver = false;
 
-  const stageSound = new Audio('MP_Tiny Button Push.mp3');
+  const stageSound = new Audio('./resources/sound/MP_Tiny Button Push.mp3');
   stageSound.play();
   container.innerHTML = "";
   field = 4;

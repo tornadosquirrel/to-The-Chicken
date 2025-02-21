@@ -56,7 +56,7 @@ body{
   height: 5vw;
   width: 5vw;
   margin : 0 0.5vw;
-  background-image: url(up.png);
+  background-image: url(./resources/image/up.png);
   background-size: contain; /* 이미지가 요소의 크기에 맞게 조정됨 */
   background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
   background-position: center; /* 이미지가 요소의 중앙에 위치하도록 설정 */
@@ -66,7 +66,7 @@ body{
   height: 5vw;
   width: 5vw;
   margin : 0 0.5vw;
-  background-image: url(down.png);
+  background-image: url(./resources/image/down.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -76,7 +76,7 @@ body{
   height: 5vw;
   width: 5vw;
   margin : 0 0.5vw;
-  background-image: url(left.png);
+  background-image: url(./resources/image/left.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -86,7 +86,7 @@ body{
   height: 5vw;
   width: 5vw;
   margin : 0 0.5vw;
-  background-image: url(right.png);
+  background-image: url(./resources/image/right.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

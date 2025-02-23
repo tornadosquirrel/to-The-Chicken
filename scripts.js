@@ -46,7 +46,7 @@ function eliminateArrow(shape) {  // 화살표 제거
   }
 
   const arrows = document.getElementsByClassName('arrows');  // arrows 변수를 함수 내에서 정의
-  const popSound = new Audio('MP_Blop.mp3');
+  const popSound = new Audio('./resources/sound/MP_Blop.mp3');
   popSound.play();
   if (cnt < arrows.length - 1) {
     if (shape === "up") {
